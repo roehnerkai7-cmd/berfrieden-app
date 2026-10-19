@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420">
+  <rect width="640" height="420" rx="28" fill="#f5f0d8"/>
+  <ellipse cx="320" cy="344" rx="170" ry="22" fill="#d9d0ac"/>
+  <path d="M203 158h222v113c0 39-31 70-70 70h-82c-39 0-70-31-70-70z" fill="#fffefa" stroke="#6d8972" stroke-width="12"/>
+  <path d="M425 185h31c36 0 53 22 53 48s-17 49-53 49h-37" fill="none" stroke="#6d8972" stroke-width="15"/>
+  <ellipse cx="314" cy="180" rx="106" ry="23" fill="#e0bb63"/>
+  <g transform="translate(150 153)">
+    <circle r="25" fill="#d79b36"/>
+    <g fill="#fff8dc">
+      <ellipse cy="-42" rx="12" ry="24"/><ellipse cy="-42" rx="12" ry="24" transform="rotate(45)"/>
+      <ellipse cy="-42" rx="12" ry="24" transform="rotate(90)"/><ellipse cy="-42" rx="12" ry="24" transform="rotate(135)"/>
+      <ellipse cy="-42" rx="12" ry="24" transform="rotate(180)"/><ellipse cy="-42" rx="12" ry="24" transform="rotate(225)"/>
+      <ellipse cy="-42" rx="12" ry="24" transform="rotate(270)"/><ellipse cy="-42" rx="12" ry="24" transform="rotate(315)"/>
+    </g>
+    <circle r="15" fill="#e6ad39"/>
+  </g>
+  <path d="M265 112c-17-24 14-31 0-56m70 56c-17-24 14-31 0-56" fill="none" stroke="#c7a66a" stroke-width="9" stroke-linecap="round"/>
+</svg>

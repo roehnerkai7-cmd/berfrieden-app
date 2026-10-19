@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#fbf7ed">
+    <meta name="description" content="Sprachbrücke und Bild-Aktivierung für den Pflegealltag im Haus Zum Bergfrieden.">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Bergfrieden">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+    <title>Sprachbrücke · Zum Bergfrieden</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Hauptnavigation">
+        <a class="brand" href="#" data-action="navigate" data-screen="home" aria-label="Zur Startseite">
+          <img class="brand-logo" src="./brand-logo.png" alt="">
+          <span><strong>Zum Bergfrieden</strong><small>Sprachbrücke</small></span>
+        </a>
+        <div class="side-label">BETREUUNG</div>
+        <nav class="side-nav">
+          <button class="nav-item active" data-action="navigate" data-screen="home"><span>⌂</span>Übersicht</button>
+          <button class="nav-item" data-action="navigate" data-screen="pictures"><span>▧</span>Bild-Aktivierung</button>
+          <button class="nav-item" data-action="navigate" data-screen="game"><span>✳</span>Wort-Spiel</button>
+          <button class="nav-item" data-action="navigate" data-screen="dialogue"><span>◌</span>Dolmetscher</button>
+          <button class="nav-item" data-action="navigate" data-screen="journal"><span>▤</span>Pflege-Tagebuch</button>
+          <div class="side-label side-label-spaced">VERWALTUNG</div>
+          <button class="nav-item" data-action="navigate" data-screen="cards"><span>▦</span>Karten-Studio</button>
+          <button class="nav-item" data-action="navigate" data-screen="residents"><span>♙</span>Bewohnerprofile</button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="resident-mini" id="sidebar-resident"></div>
+          <button class="nav-item tutorial-link" data-action="tutorial"><span>ⓘ</span>Kurzanleitung</button>
+          <div class="privacy-note"><span class="privacy-dot"></span> Daten bleiben auf diesem Gerät</div>
+        </div>
+      </aside>
+
+      <main class="main-area">
+        <header class="topbar">
+          <button class="mobile-brand" data-action="navigate" data-screen="home"><img class="mobile-logo" src="./brand-logo.png" alt=""><strong>Bergfrieden</strong></button>
+          <div class="topbar-spacer"></div>
+          <div class="sound-control">
+            <span id="sound-label">Ton an</span>
+            <button class="switch" id="sound-switch" data-action="toggle-sound" role="switch" aria-checked="true" aria-label="Audioeffekte stummschalten"><span></span></button>
+          </div>
+          <button class="button button-small button-install" id="install-app" data-action="install-app" hidden>⬇ Installieren</button>
+          <button class="profile-chip" id="top-profile" data-action="navigate" data-screen="residents"></button>
+        </header>
+        <div id="screen" class="screen" tabindex="-1"></div>
+      </main>
+
+      <nav class="mobile-dock" aria-label="Schnellzugriff">
+        <button class="dock-button" data-action="navigate" data-screen="residents"><span>♙</span><small>Bewohner</small></button>
+        <button class="dock-button dock-primary" data-action="door"><span>↗</span><small>Tor öffnen</small></button>
+      </nav>
+    </div>
+    <div id="toast-region" class="toast-region" aria-live="polite"></div>
+    <div id="modal-root"></div>
+    <noscript><p class="noscript-notice">Für die Sprachbrücke muss JavaScript eingeschaltet sein.</p></noscript>
+  </body>
+</html>
