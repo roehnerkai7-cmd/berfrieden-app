@@ -22,27 +22,14 @@
     }
   }
 
-  function manualLock() {
+  function applyLockedState() {
     const lock = document.getElementById("password-lock");
     const appShell = document.getElementById("app-shell");
     if (lock) lock.style.display = "flex";
     if (appShell) appShell.classList.add("is-locked");
-    saveUnlocked(false);
-    const input = document.getElementById("password-input");
-    if (input) {
-      input.value = "";
-      input.focus();
-    }
   }
 
-  function resetInactivityTimer() {
-    if (inactivityTimer) clearTimeout(inactivityTimer);
-    inactivityTimer = setTimeout(() => {
-      manualLock();
-    }, INACTIVITY_MS);
-  }
-
-  function unlockApp() {
+  function applyUnlockedState() {
     const lock = document.getElementById("password-lock");
     const appShell = document.getElementById("app-shell");
     const errorText = document.getElementById("password-error");
@@ -50,7 +37,19 @@
     if (appShell) appShell.classList.remove("is-locked");
     if (errorText) errorText.textContent = "";
     saveUnlocked(true);
-    resetInactivityTimer();
+  }
+
+  function resetInactivityTimer() {
+    if (inactivityTimer) clearTimeout(inactivityTimer);
+    inactivityTimer = setTimeout(() => {
+      applyLockedState();
+      saveUnlocked(false);
+      const input = document.getElementById("password-input");
+      if (input) {
+        input.value = "";
+        input.focus();
+      }
+    }, INACTIVITY_MS);
   }
 
   function validate() {
@@ -61,7 +60,8 @@
     const value = String(input.value || "").trim();
 
     if (value === APP_PASSWORD) {
-      unlockApp();
+      applyUnlockedState();
+      resetInactivityTimer();
       return;
     }
 
@@ -75,28 +75,17 @@
     resetInactivityTimer();
   }
 
-  function bindLogoutButton() {
-    const button = document.getElementById("lock-logout");
-    if (!button) return;
-
-    button.addEventListener("click", () => {
-      manualLock();
-    });
-  }
-
   function initLockScreen() {
     const input = document.getElementById("password-input");
     const button = document.getElementById("unlock-button");
 
     if (isUnlocked()) {
-      unlockApp();
+      applyUnlockedState();
+      resetInactivityTimer();
       return;
     }
 
-    const lock = document.getElementById("password-lock");
-    const appShell = document.getElementById("app-shell");
-    if (lock) lock.style.display = "flex";
-    if (appShell) appShell.classList.add("is-locked");
+    applyLockedState();
 
     if (input) {
       input.addEventListener("keydown", event => {
@@ -108,8 +97,6 @@
     if (button) {
       button.addEventListener("click", validate);
     }
-
-    bindLogoutButton();
 
     document.addEventListener("click", registerUserActivity, { passive: true });
     document.addEventListener("keydown", registerUserActivity, { passive: true });
