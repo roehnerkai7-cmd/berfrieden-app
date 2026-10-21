@@ -15,9 +15,22 @@
     <link rel="stylesheet" href="./styles.css">
     <script src="./app.js" defer></script>
     <script src="./language-support.js" defer></script>
+    <script src="./lock-screen.js" defer></script>
   </head>
   <body>
-    <div class="app-shell">
+    <div id="password-lock" class="password-lock" aria-live="polite">
+      <div class="password-panel">
+        <div class="password-badge">Bergfrieden</div>
+        <h1>Zugriff gesperrt</h1>
+        <p>Bitte Passwort eingeben</p>
+        <label class="password-label" for="password-input">Passwort</label>
+        <input id="password-input" class="password-input" type="password" autocomplete="off" spellcheck="false" placeholder="•••••">
+        <button id="unlock-button" class="password-button" type="button">Entsperren</button>
+        <p id="password-error" class="password-error"></p>
+      </div>
+    </div>
+
+    <div class="app-shell" id="app-shell">
       <aside class="sidebar" aria-label="Hauptnavigation">
         <a class="brand" href="#" data-action="navigate" data-screen="home" aria-label="Zur Startseite">
           <img class="brand-logo" src="./brand-logo.png" alt="">
@@ -51,6 +64,7 @@
           </div>
           <button class="button button-small button-install" id="install-app" data-action="install-app" hidden>⬇ Installieren</button>
           <button class="profile-chip" id="top-profile" data-action="navigate" data-screen="residents"></button>
+          <button class="button button-small button-logout" id="lock-logout" data-action="lock-logout" type="button">Sperren</button>
         </header>
         <div id="screen" class="screen" tabindex="-1"></div>
       </main>
