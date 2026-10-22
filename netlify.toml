@@ -1,2 +1,6 @@
 [build]
-  publish = "."
+  # Assemble the static web app into "public" so the publish directory always exists,
+  # matching the project's configured deploy directory. The source files stay at the
+  # repo root because the iOS project references them there.
+  command = "rm -rf public && mkdir -p public && cp -R index.html app.js language-support.js lock-screen.js styles.css manifest.webmanifest service-worker.js brand-logo.png icons images public/"
+  publish = "public"
