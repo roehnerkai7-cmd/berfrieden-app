@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_NAME = "bergfrieden-pwa-v8";
+const CACHE_NAME = "bergfrieden-pwa-v9";
 const RUNTIME_CACHE_NAME = "bergfrieden-runtime-v1";
 const CACHEABLE_EXTERNAL_ORIGIN = "https://cdn.jsdelivr.net";
 const APP_FILES = [
@@ -9,6 +9,7 @@ const APP_FILES = [
   "./styles.css",
   "./app.js",
   "./language-support.js",
+  "./lock-screen.js",
   "./brand-logo.png",
   "./manifest.webmanifest",
   "./icons/icon-192.png",
