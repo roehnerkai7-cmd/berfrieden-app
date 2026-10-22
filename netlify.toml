@@ -1,2 +1,5 @@
+# Static site with no framework: copy the web assets into `public`, which is
+# also the publish directory configured in the Netlify UI.
 [build]
-  publish = "."
+  command = "rm -rf public && mkdir -p public && cp -R index.html app.js language-support.js lock-screen.js service-worker.js styles.css manifest.webmanifest brand-logo.png icons images public/"
+  publish = "public"
