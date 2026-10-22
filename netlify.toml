@@ -1,2 +1,4 @@
 [build]
-  publish = "."
+  # Copy the static web app into `public/` (the publish directory configured for this site).
+  command = "rm -rf public && mkdir public && cp -r index.html *.js *.css manifest.webmanifest brand-logo.png icons images public/"
+  publish = "public"
